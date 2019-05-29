@@ -1,24 +1,55 @@
-const readline = require('readline')
-const gababo = require('./gababo')
-
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-})
-
-var answerGroup = ['가위', '바위', '보']
-console.log(`준비가 되면 '시작' 이라고 입력해주세요.`)
-rl.on('line', (what) => {
-    if (what === '시작') {
-        rl.question(`${answerGroup.join('')}! => `, (answer) => {
-            var results = gababo.main(answer, answerGroup)
-            if (results.results === '종료합니다.') {
-                rl.close()
-            } else {
-                console.log(`${results.input} vs. ${results.output} => ${results.results}`)
-            }
-        })
-    } else if (what === '종료') {
-        rl.close()
+function validationInput(input, answerGroup) {
+    if (input === '종료') {
+        return [false, '종료합니다.']
     }
-})
+
+    if (!answerGroup.includes(input)) {
+        return [false, `${answerGroup.join(',')} 중에 입력해주세요.`]
+    }
+    return [true, '통과']
+}
+
+function winner(inputIdx, outputIdx, answerLength) {
+    var results = ''
+    if (outputIdx === 0 && inputIdx === (answerLength - 1)) {
+        inputIdx = -1
+    } else if (outputIdx === (answerLength - 1) && inputIdx === 0) {
+        outputIdx = -1
+    }
+    if (inputIdx > outputIdx) {
+        results = '승리'
+    } else if (inputIdx === outputIdx) {
+        results = '무승부'
+    } else {
+        results = '패배'
+    }
+    return results
+}
+
+function main(input, answerGroup) {
+    var output = {
+        input: input,
+        answerGroup: answerGroup,
+        output: '',
+        results: ''
+    }
+    var validationCheck = validationInput(input, answerGroup)
+    if (!validationCheck[0]) {
+        output.results = validationCheck[1]
+    } else {
+        var outputIdx = Math.floor(Math.random() * answerGroup.length)
+        var inputIdx = answerGroup.indexOf(input)
+
+        output.output = answerGroup[outputIdx]
+        output.results = winner(inputIdx, outputIdx, answerGroup.length)
+    }
+    return output
+}
+
+
+
+module.exports = {
+    main,
+    validationInput,
+    winner
+}

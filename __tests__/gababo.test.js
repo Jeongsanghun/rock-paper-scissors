@@ -1,4 +1,4 @@
-const gababo = require('../gababo')
+const gababo = require('..')
 
 describe('validation check', () => {
     it('입력값 체크', () => {
