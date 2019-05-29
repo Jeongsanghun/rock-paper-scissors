@@ -1,0 +1,15 @@
+{
+  "name": "rock-paper-scissors",
+  "version": "1.0.0",
+  "description": "가위바위보를 해봅니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "sanghun.j <sanghun1757@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
