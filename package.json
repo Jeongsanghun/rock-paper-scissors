@@ -2,9 +2,11 @@
   "name": "rock-paper-scissors",
   "version": "1.0.0",
   "description": "가위바위보를 해봅니다.",
+  "repository": "Jeongsanghun/rock-paper-scissors",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "node test.js"
   },
   "author": "sanghun.j <sanghun1757@gmail.com>",
   "license": "MIT",
