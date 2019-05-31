@@ -1,6 +1,6 @@
 {
   "name": "rock-paper-scissors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "가위바위보를 해봅니다.",
   "repository": "Jeongsanghun/rock-paper-scissors",
   "main": "index.js",
@@ -17,6 +17,8 @@
     "standard": "^12.0.1"
   },
   "standard": {
-    "env": [ "jest" ]
+    "env": [
+      "jest"
+    ]
   }
 }
